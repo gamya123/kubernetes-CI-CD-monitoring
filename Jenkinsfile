@@ -11,10 +11,10 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t devops-monitoring:v1 .'
+                    sh 'docker build -t devops-monitoring:v1 .'
+                    sh 'minikube image load devops-monitoring:v1'
             }
         }
-
         stage('Deploy to Kubernetes') {
             steps {
                 sh '''
